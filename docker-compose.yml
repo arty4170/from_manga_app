@@ -6,7 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    user: ${CURRENT_UID}
     volumes:
     - ./:/code
     working_dir: /code
