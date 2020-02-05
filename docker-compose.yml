@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  vue-cli:
+    container_name: vue-cli-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - ./:/code
+    working_dir: /code
+    stdin_open: true
+    tty: true
+    ports:
+    - "8080:8080"
+    networks:
+      - frontend
+networks:
+  frontend:
