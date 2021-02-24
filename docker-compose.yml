@@ -3,6 +3,7 @@ version: "3.3"
 services:
   vue-cli:
     container_name: vue-cli-container
+    command: "vue ui --headless --port 8000 --host 0.0.0.0"
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,6 +14,7 @@ services:
     tty: true
     ports:
     - "8080:8080"
+    - "8000:8000"
     networks:
       - frontend
 networks:
