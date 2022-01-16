@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16
 
 # install simple http server for serving static content
 RUN npm install -g @vue/cli
