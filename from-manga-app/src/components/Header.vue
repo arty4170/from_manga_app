@@ -1,10 +1,10 @@
 <template>
 <header>
-	<div class="logo"><img src="@/assets/logo.png"></div>
+	<div class="logo"><img src="logo.png"></div>
 	<div class="btns">
-		<Button src1="img/pen.png"/>
-		<Button src1="@/assets/search.jpg"/>
-		<Button src1="@/assets/user.png"/>
+		<Button src1="./pen.png"/>
+		<Button src1="./search.jpg"/>
+		<Button src1="./user.png"/>
 	</div>
 </header>
 </template>

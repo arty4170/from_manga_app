@@ -22,7 +22,7 @@ export default {
         description: 'Тот самый сёнэн.',
         author: 'Масащи Кищимото',
         date: '1999',
-        coverSrc: '@/assets/Naruto-manga.jpg',
+        coverSrc: './Naruto-manga.jpg',
       }
     }
   }

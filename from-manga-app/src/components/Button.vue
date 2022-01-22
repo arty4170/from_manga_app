@@ -18,11 +18,12 @@ export default {
 <style>
 .btn{
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 50%;
   border: 3px solid blue;
-  max-height: 100px;
+  max-width: 25px;
+  padding: 20px;
 }
 .btn img{
-  height: 100%;
+  width: 100%;
 }
 </style>
