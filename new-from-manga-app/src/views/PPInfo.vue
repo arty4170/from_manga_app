@@ -1,10 +1,10 @@
 <template>
 	<div class="info">
 		<div class="left-column">
-			<div class="title">title</div>
+			<manga-title>title</manga-title>
 			<div class="orig-title">orig-title</div>
 			<div class="genre">Жанр</div>
-			<div class="description">description</div>
+			<description>description</description>
 			<div class="title-status">title status</div>
 			<div class="translation-status">translation status</div>
 		</div>

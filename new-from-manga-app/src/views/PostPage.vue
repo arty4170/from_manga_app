@@ -1,9 +1,9 @@
 <template>
 <div class="post-page">
 	<div class="post-nav">
-		<div @click="$router.push('/:id/info')">Информация</div>
-		<div @click="$router.push('/:id/chapters')">Главы</div>
-		<div @click="$router.push('/:id/comments')">Комментарии</div>
+		<div @click="$router.push({path: `/${$route.params.id}/info`})">Информация</div>
+		<div @click="$router.push({path: `/${$route.params.id}/chapters`})">Главы</div>
+		<div @click="$router.push({path: `/${$route.params.id}/comments`})">Комментарии</div>
 	</div>
 	<router-view/>
 </div>

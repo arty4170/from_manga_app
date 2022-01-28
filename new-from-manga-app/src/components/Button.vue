@@ -1,6 +1,6 @@
 <template>
   <div class="btn">
-    <img :src="ImgSrc">
+    <img :src="src1">
   </div>
 </template>
 
@@ -11,11 +11,6 @@ export default {
   name: 'Button',
   props: {
     src1: String,
-  },
-  data() {
-    return {
-      ImgSrc: ~(this.src1)
-    }
   }
 }
 </script>

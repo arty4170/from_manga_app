@@ -1,6 +1,6 @@
 <template>
   <div class="post-list">
-    <Post v-for="post in posts" :key="post.id" :post="post" @click="$router.push(post.id)"></Post>
+    <Post v-for="post in posts" :key="post" :post="post" @click="$router.push(post.id)"></Post>
   </div>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
         description: 'Тот самый сёнэн.',
         author: 'Масащи Кищимото',
         date: '1999',
-        coverSrc: './Naruto-manga.jpg',
+        coverSrc: require('@/assets/Naruto-manga.jpg'),
       },
       {
         id: '2',
@@ -28,7 +28,7 @@ export default {
         description: 'Тот самый сёнэн.',
         author: 'Масащи Кищимото',
         date: '1999',
-        coverSrc: './Naruto-manga.jpg',
+        coverSrc: require('@/assets//Naruto-manga.jpg'),
       }
       ]
     }

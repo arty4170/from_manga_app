@@ -1,12 +1,12 @@
 <template>
   <div class="post">
     <div class="left-col">
-      <div class="title">{{post.title}}</div>
-      <div class="description">{{post.description}}</div>
+      <manga-title>{{post.title}}</manga-title>
+      <description>{{post.description}}</description>
       <div class="author">{{post.author}}</div>
     </div>
     <div class="right-col">
-      <div class="image"><img :src="post.coverSrc"></div>
+      <cover :coverSrc="post.coverSrc"></cover>
       <div class="date">{{post.date}}</div>
     </div>
   </div>
