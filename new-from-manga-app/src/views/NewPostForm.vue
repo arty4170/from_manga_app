@@ -1,77 +1,102 @@
 <template>
-	<form action="post">
-		<ul>
-			<li>
-				<my-input type="file" name="cover">
+	<div>
+		<form id="add-post-form" action="post" @submit="addPost">
+			<ul>
+				<li>
 					<div>Обложка</div>
-				</my-input>
-			</li>
-			<li>
-				<my-input type="text" name="origtitle">
-				<div class="origtitle">Оригинальное название</div>
-				</my-input>
-			</li>
-			<li>
-				<my-input>
-					<div class="title">Название на 
-						<my-select>
-							<option value="русский">русском</option>
-					<option value="украинский">украинском</option>
-						</my-select>
-					</div>
-				</my-input>
-			</li>
-			<li>
-				<my-input type="date" name="date">
-					<div>Год выпуска</div>
-				</my-input>
-			</li>
-			<li>
-				<my-input name="author" :add_input_button="true">
-					<div>Автор(ы)</div>
-				</my-input>
-			</li>
-			<li>
-				<my-input name="publishing">
-					<div>Издатель</div>
-				</my-input>
-			</li>
-			<li>
-				<my-input name="genre" :add_input_button="true">
-					<div>Жанры</div>
-				</my-input>
-			</li>
-			<li><my-input name="translator" :add_input_button="true">
-					<div>Переводчик(и)</div>
-				</my-input>
-			</li>
-			<li>
-				<div>Статус тайтла</div>
-				<my-select></my-select>
-			</li>
-			<li>
-				<div>Статус перевода</div>
-				<my-select></my-select>
-			</li>
-			<li>
-				<div>Описание</div>
-				<textarea></textarea>
-			</li>
-		</ul>
-		<div class="btns">
-			<button type="reset">Сбросить</button>
-			<button type="submit" @click="$router.push('/')">Сохранить</button>
+					<q-file v-model="post.cover" label="Выберите файл" filled style="max-width: 300px"/>
+				</li>
+				<li>
+					<my-input type="text" name="origtitle" v-model="post.origtitle">
+					<div class="origtitle">Оригинальное название</div>
+					</my-input>
+				</li>
+				<li>
+					<my-input v-model="post.title">
+						<div class="title">Название на русском</div>
+					</my-input>
+				</li>
+				<li>
+					<my-input type="date" name="date" v-model="post.date">
+						<div>Год выпуска</div>
+					</my-input>
+				</li>
+				<li>
+					<my-input name="author" :add_input_button="true" v-model="post.author">
+						<div>Автор(ы)</div>
+					</my-input>
+				</li>
+				<li>
+					<my-input name="publishing" v-model="post.publishing">
+						<div>Издатель</div>
+					</my-input>
+				</li>
+				<li>
+					<my-input name="genre" :add_input_button="true" v-model="post.genre">
+						<div>Жанры</div>
+					</my-input>
+				</li>
+				<li>
+					<my-input name="translator" :add_input_button="true" v-model="post.translators">
+						<div>Переводчик(и)</div>
+					</my-input>
+				</li>
+				<li>
+					<my-select v-model="post.title_status" :options="{on: 'Онгоинг',end: 'Завершён',anons: 'Анонс', paused: 'Приостановлен', stopped: 'Выпуск прекращён'}">
+						<div>Статус тайтла</div>
+					</my-select>
+				</li>
+				<li>
+					<div>Статус перевода</div>
+					<my-select v-model="post.translation_status" :options="{on: 'Продолжается',end: 'Завершён', paused: 'Приостановлен', stopped: 'Перевод прекращён'}"></my-select>
+				</li>
+				<li>
+					<my-textarea v-model="post.description">
+						<div>Описание</div>
+					</my-textarea>
+				</li>
+			</ul>
+			<div class="btns">
+				<button type="reset">Сбросить</button>
+				<button type="submit" @click.prevent="onSubmit('#add-post-form')">Сохранить</button>
+			</div>
+		</form>
 		</div>
-	</form>
 </template>
 <script>
+	import { mapMutations } from 'vuex';
+
 	export default {
 		name: 'NewPost',
 		methods: {
 			add_input(name) {
 
+			},
+			...mapMutations({
+				addPost: 'addPost'
+			}),
+			onSubmit(formElement) {
+				const form = this.$el.querySelector(formElement)
+				form.submit()
 			}
-		}
+		},
+		data() {
+			return {
+				post: {
+					cover: {},
+					origtitle: '',
+					title: '',
+					date: '',
+					author: '',
+					publishing: '',
+					genre: '',
+					translator: '',
+					title_status: '',
+					translation_status: '',
+					description: '',
+				},
+			}
+		},
 	}
 </script>
 <style scoped>

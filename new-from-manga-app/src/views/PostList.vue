@@ -11,26 +11,9 @@ export default {
   components: {
     Post,
   },
-  data() {
-    return {
-      posts: [
-      {
-        id: '1',
-        title: 'Наруто',
-        description: 'Тот самый сёнэн.',
-        author: 'Масащи Кищимото',
-        date: '1999',
-        coverSrc: require('@/assets/Naruto-manga.jpg'),
-      },
-      {
-        id: '2',
-        title: 'Наруто',
-        description: 'Тот самый сёнэн.',
-        author: 'Масащи Кищимото',
-        date: '1999',
-        coverSrc: require('@/assets//Naruto-manga.jpg'),
-      }
-      ]
+  computed: {
+    posts() {
+      return this.$store.state.posts
     }
   }
 }

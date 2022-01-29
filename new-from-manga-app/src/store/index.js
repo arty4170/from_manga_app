@@ -21,10 +21,14 @@ export default createStore({
 	},
 	actions: {
 		addPost(context, post) {
-			context.commit('addPost', post)
+			setTimeout(() => {
+				context.commit('addPost', post)
+			})
 		},
 		deletePost(context, postId) {
-			context.commit('deletePost', postId)
+			setTimeout(() => {
+				context.commit('deletePost', postId)
+			})
 		},
 	}
 })
