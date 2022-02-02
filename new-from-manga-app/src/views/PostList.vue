@@ -2,9 +2,13 @@
   <div class="post-list">
     <Post v-for="post in posts" :key="post" :post="post" @click="$router.push(post.id)"></Post>
   </div>
+  <div class="pages">
+    
+  </div>
 </template>
 <script>
 import Post from '@/components/Post'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'PostList',
@@ -12,8 +16,11 @@ export default {
     Post,
   },
   computed: {
+    ...mapGetters({
+      getShortPosts: 'posts/getShortPosts'
+    }),
     posts() {
-      return this.$store.state.posts
+      return this.getShortPosts(0)
     }
   }
 }

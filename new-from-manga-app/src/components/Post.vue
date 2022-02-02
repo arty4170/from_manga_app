@@ -6,7 +6,7 @@
       <div class="author">{{post.author}}</div>
     </div>
     <div class="right-col">
-      <cover :coverSrc="post.coverSrc"></cover>
+      <cover :coverSrc="post.cover"></cover>
       <div class="date">{{post.date}}</div>
     </div>
   </div>
@@ -19,6 +19,9 @@ export default {
   name: 'Post',
   props: {
     post: Object,
+  },
+  created() {
+    console.log(this.post)
   }
 }
 </script>

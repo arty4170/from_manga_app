@@ -12,6 +12,12 @@
     }
   }
 </script>
-<style scoped>
-
+<style>
+  @font-face {
+    font-family: "CCMeanwhileUncial";
+    src: url('~@/assets/CCMeanwhileUncial-Regular.ttf') format('truetype')
+  }
+  * {
+    font-family: CCMeanwhileUncial;
+  }
 </style>

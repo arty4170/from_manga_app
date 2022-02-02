@@ -1,34 +1,33 @@
 <template>
 <header>
-	<div class="logo" @click="$router.push('/')"><img src="@/assets/logo.png"></div>
+	<div class="logo" @click="$router.push('/posts')"><img src="@/assets/logo.png"></div>
 	<div class="btns">
+		<Button :src1="searchImg" @click="ifSearch = !ifSearch"/>
 		<Button :src1="newPostImg" @click="$router.push('/add_post')" />
-		<Button :src1="searchImg"/>
 		<Button :src1="userImg" @click="$router.push('/user_form')"/>
 	</div>
+	<SearchForm v-if="ifSearch" @close="ifSearch=false"/>
 </header>
 </template>
 <script>
 import Button from '@/components/Button.vue'
+import SearchForm from '@/components/SearchForm'
 
 
 export default {
 	name: 'Header',
 	components: {
 		Button,
+		SearchForm,
 	},
 	data() {
 		return {
-			newPostImg: Object,
-			searchImg: Object,
-			userImg: Object,
+			newPostImg: require('@/assets/pen.png'),
+			searchImg: require('@/assets/search.jpg'),
+			userImg: require('@/assets/user.png'),
+			ifSearch: false,
 		}
 	},
-	created() {
-		this.newPostImg = require('@/assets/pen.png')
-		this.searchImg = require('@/assets/search.jpg')
-		this.userImg = require('@/assets/user.png')
-	}
 }
 </script>
 <style scoped>

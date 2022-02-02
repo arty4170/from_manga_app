@@ -20,7 +20,7 @@ export default {
   cursor: pointer;
   border-radius: 50%;
   border: 3px solid blue;
-  max-width: 25px;
+  width: 90px;
   padding: 20px;
 }
 .btn img{

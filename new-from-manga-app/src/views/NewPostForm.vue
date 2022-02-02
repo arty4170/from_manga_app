@@ -22,7 +22,7 @@
 					</my-input>
 				</li>
 				<li>
-					<my-input name="author" :add_input_button="true" v-model="post.author">
+					<my-input name="author" :add_input_button="true" v-model="post.authors">
 						<div>Автор(ы)</div>
 					</my-input>
 				</li>
@@ -58,7 +58,7 @@
 			</ul>
 			<div class="btns">
 				<button type="reset">Сбросить</button>
-				<button type="submit" @click.prevent="onSubmit('#add-post-form')">Сохранить</button>
+				<button type="submit" @click.prevent="onSubmit">Сохранить</button>
 			</div>
 		</form>
 		</div>
@@ -73,30 +73,34 @@
 
 			},
 			...mapMutations({
-				addPost: 'addPost'
+				addPost: 'posts/addPost'
 			}),
-			onSubmit(formElement) {
-				const form = this.$el.querySelector(formElement)
-				form.submit()
+			onSubmit() {
+				this.addPost(this.post);
+				this.$router.push('/');
 			}
 		},
 		data() {
 			return {
 				post: {
-					cover: {},
+					id: '',
+					cover: '',
 					origtitle: '',
 					title: '',
 					date: '',
-					author: '',
+					authors: '',
 					publishing: '',
 					genre: '',
-					translator: '',
+					translators: '',
 					title_status: '',
 					translation_status: '',
 					description: '',
 				},
 			}
 		},
+		created() {
+			this.post.id = `${new Date().getTime()}`
+		}
 	}
 </script>
 <style scoped>

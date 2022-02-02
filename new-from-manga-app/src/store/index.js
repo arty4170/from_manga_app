@@ -1,34 +1,10 @@
 import {createStore} from 'vuex'
+import posts from './posts'
+import users from './users'
 
 export default createStore({
-	state() {
-		return {
-			posts: []
-		}
+	modules: {
+		posts: posts,
+		users: users,
 	},
-	mutations: {
-		addPost(state, post) {
-			state.posts.push(post)
-		},
-		deletePost(state, postId) {
-			for (let i = 0; i < state.posts.length; ++i) {
-				const post = state.posts[i];
-				if (post.id === postId) {
-					state.posts.splice(i, i)
-				}
-			}
-		},
-	},
-	actions: {
-		addPost(context, post) {
-			setTimeout(() => {
-				context.commit('addPost', post)
-			})
-		},
-		deletePost(context, postId) {
-			setTimeout(() => {
-				context.commit('deletePost', postId)
-			})
-		},
-	}
 })

@@ -1,24 +1,34 @@
 <template>
 	<div class="info">
 		<div class="left-column">
-			<manga-title>title</manga-title>
-			<div class="orig-title">orig-title</div>
-			<div class="genre">Жанр</div>
-			<description>description</description>
-			<div class="title-status">title status</div>
-			<div class="translation-status">translation status</div>
+			<manga-title>{{post.title}}</manga-title>
+			<div class="orig-title">{{post.origtitle}}</div>
+			<div class="genre">{{post.genre}}</div>
+			<description>{{post.description}}</description>
+			<div class="title-status">{{post.title_status}}</div>
+			<div class="translation-status">{{post.translation_status}}</div>
 		</div>
 		<div class="right-column">
-			<div class="cover"><img src="#"></div>
-			<div class="author">author</div>
-			<div class="publishing">publishing house</div>
-			<div class="translator">translator</div>
+			<div class="cover"><img :src="post.cover"></div>
+			<div class="author">{{post.authors}}</div>
+			<div class="publishing">{{post.publishing}}</div>
+			<div class="translator">{{post.translators}}</div>
 		</div>
 	</div>
 </template>
 <script>
+	import {mapGetters} from 'vuex'
+
 	export default {
 		name: 'PPInfo',
+		computed: {
+			...mapGetters({
+				getPostById: 'posts/getPostById'
+			}),
+			post() {
+				return this.getPostById(this.$route.params.id)
+			}
+		}
 	}
 </script>
 <style scoped>

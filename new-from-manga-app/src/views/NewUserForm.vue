@@ -1,23 +1,47 @@
 <template>
 	<div class="new-user-form">
 		<form action="post">
-			<div class="user-name">
+			<my-input name="login" v-model="user.login">
 				<div>Имя пользователя:</div>
-				<input type="text">
-			</div>
-			<div class="pasword">
+			</my-input>
+			<my-input name="password" v-model="user.password">
 				<div>Пароль:</div>
-				<input type="text">
+			</my-input>
+			<my-input name="repeat-password" v-model="repeat_password">
 				<div>Повторите пароль:</div>
-				<input type="text">
-			</div>
-			<button type="submit" @click="$router.push('/')">Зарегистрироваться</button>
+			</my-input>
+			<button @click.prevent="onSubmit">Зарегистрироваться</button>
 		</form>
 	</div>
 </template>
 <script>
+	import {mapMutations} from 'vuex'
+
 	export default {
-		name: 'NewUserForm'
+		name: 'NewUserForm',
+		data() {
+			return {
+				user: {
+					login: '',
+					password: '',
+					loggedIn: true
+				},
+				repeat_password: ''
+			}
+		},
+		methods: {
+			...mapMutations({
+				signIn: 'users/signIn'
+			}),
+			onSubmit() {
+				if (this.user.password !== this.repeat_password) {
+					prompt('Пароль должен совпадать в двух строках')
+				} else {
+					this.signIn(this.user)
+					this.$router.push('/')
+				}
+			}
+		}
 	}
 </script>
 <style scoped>

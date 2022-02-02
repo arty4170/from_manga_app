@@ -11,7 +11,16 @@ import UserForm from '@/views/UserForm'
 const routes = [
   {
     path: '/',
+    redirect: '/posts'
+  },
+  {
+    path: '/posts',
     name: 'PostList',
+    component: PostList
+  },
+  {
+    path: '/search/:inputValue + :radioValue',
+    name: 'SearchList',
     component: PostList
   },
   {
