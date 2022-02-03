@@ -15,7 +15,7 @@
 	</div>
 </template>
 <script>
-	import {mapMutations} from 'vuex'
+	import {mapActions} from 'vuex'
 
 	export default {
 		name: 'NewUserForm',
@@ -23,14 +23,13 @@
 			return {
 				user: {
 					login: '',
-					password: '',
-					loggedIn: true
+					password: ''
 				},
 				repeat_password: ''
 			}
 		},
 		methods: {
-			...mapMutations({
+			...mapActions({
 				signIn: 'users/signIn'
 			}),
 			onSubmit() {

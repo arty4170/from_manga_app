@@ -8,12 +8,14 @@
 </template>
 <script>
 import Post from '@/components/Post'
+import Sidebar from '@/components/Sidebar'
 import {mapGetters} from 'vuex'
 
 export default {
   name: 'PostList',
   components: {
     Post,
+    Sidebar,
   },
   computed: {
     ...mapGetters({

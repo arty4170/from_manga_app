@@ -15,13 +15,15 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-tabs': 'off',
     'no-multiple-empty-lines': 'off',
-    indent: 'off',
+    'indent': 'off',
     'comma-dangle': 'off',
     'space-before-function-paren': 'off',
     'no-trailing-spaces': 'off',
     'eol-last': 'off',
     'object-curly-spacing': 'off',
     'semi': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'quotes': 'off',
+    'vue/no-unused-components': 'off'
     }
 }

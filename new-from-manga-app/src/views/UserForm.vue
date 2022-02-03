@@ -13,7 +13,7 @@
 	</div>
 </template>
 <script>
-	import {mapGetters} from 'vuex'
+	import {mapActions} from 'vuex'
 
 	export default {
 		name: 'UserForm',
@@ -21,23 +21,17 @@
 			return {
 				user: {
 					login: '',
-					password: '',
-					loggedIn: true
+					password: ''
 				}
 			}
 		},
 		methods: {
-			...mapGetters({
+			...mapActions({
 				logIn: 'users/logIn',
 			}),
 			onSubmit() {
-				if (this.logIn(this.user)) {
-					this.$router.push('/')
-				} else {
-					this.user.login = ''
-					this.user.password = ''
-					prompt('Неправильное имя пользователя или пароль')
-				}
+				this.logIn(this.user)
+				this.$router.push('/')
 			}
 		},
 	}
