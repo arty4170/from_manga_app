@@ -1,3 +1,18 @@
+import {getStorage, ref, getDownloadURL} from 'firebase/storage'
+
+function getPostCover(coverSrc) {
+	console.log(typeof (getDownloadURL))
+	const storage = getStorage()
+	const src = ref(storage, coverSrc)
+	let a = ''
+	getDownloadURL(src).then((url) => {
+		a = url
+		console.log(a)
+	})
+	console.log(a)
+	return a
+}
+
 export default {
 	getPostById(state) {
 		return (postId) => {
@@ -19,7 +34,7 @@ export default {
 					title: el.title,
 					description: el.description,
 					author: el.author,
-					cover: el.cover,
+					cover: getPostCover(el.cover),
 					date: el.date,
 				}
 			}

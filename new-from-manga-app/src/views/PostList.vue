@@ -1,6 +1,8 @@
 <template>
   <div class="post-list">
-    <Post v-for="post in posts" :key="post" :post="post" @click="$router.push(post.id)"></Post>
+    <div class="container">
+      <Post v-for="post in posts" :key="post" :post="post" @click="$router.push(post.id)"></Post>
+    </div>
   </div>
   <div class="pages">
     

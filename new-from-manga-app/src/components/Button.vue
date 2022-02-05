@@ -21,6 +21,7 @@ export default {
   border-radius: 50%;
   border: 3px solid blue;
   width: 90px;
+  height: 90px;
   padding: 20px;
 }
 .btn img{

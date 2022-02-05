@@ -31,7 +31,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 80%;
   border-radius: 10px;
   border: 3px solid blue;
   padding: 25px;

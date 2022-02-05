@@ -10,4 +10,7 @@ export default {
 			}
 		}
 	},
+	clearPostList(state) {
+		state.posts = []
+	}
 }

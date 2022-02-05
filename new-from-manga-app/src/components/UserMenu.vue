@@ -5,8 +5,7 @@
 			<Button @click="$emit('showNotes')" :src1="notificationsSrc"/>
 			<Button @click="$emit('showMarks')" :src1="marksSrc"/>
 			<Button @click="$emit('showSettings')" :src1="settingsSrc"/>
-			<Button @click="$emit('logOut')" src1=""/>
-			fasdfaf
+			<Button @click="$emit('logOut')" :src1="logoutSrc"/>
 		</div>
 	</div>
 </template>
@@ -26,9 +25,10 @@
 		},
 		data() {
 			return {
-				notificationsSrc: '',
-				marksSrc: '',
-				settingsSrc: '',
+				notificationsSrc: require('@/assets/notifications.jpeg'),
+				marksSrc: require('@/assets/marks.png'),
+				settingsSrc: require('@/assets/settings.png'),
+				logoutSrc: require('@/assets/logOut.png'),
 				menuClass: 'menu',
 			}
 		},
@@ -53,5 +53,8 @@
 	.menu-active {
 		display: flex;
 		flex-direction: column;
+		gap: 15px;
+		position: fixed;
+		margin-top: 15px;
 	}
 </style>

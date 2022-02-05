@@ -13,16 +13,7 @@ import MyTextArea from '@/components/ui/MyTextArea'
 import MyRadio from '@/components/ui/MyRadio'
 import { initializeApp } from "firebase/app"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAsqXQl31pyLj3-CYYDksVVRTx9TOp4KBI",
-  authDomain: "from-manga-app.firebaseapp.com",
-  projectId: "from-manga-app",
-  storageBucket: "from-manga-app.appspot.com",
-  messagingSenderId: "912326591500",
-  appId: "1:912326591500:web:e485a577d7847748749a29"
-}
-initializeApp(firebaseConfig)
+import {getDatabase, ref, onValue} from 'firebase/database'
 
 const app = createApp(App)
 	.use(Quasar, quasarUserOptions)
@@ -37,9 +28,30 @@ app.component('manga-title', Title)
 app.component('my-textarea', MyTextArea)
 app.component('my-radio', MyRadio)
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAsqXQl31pyLj3-CYYDksVVRTx9TOp4KBI",
+  authDomain: "from-manga-app.firebaseapp.com",
+  databaseUrl: "https://from-manga-app-default-rtdb.firebaseio.com",
+  projectId: "from-manga-app",
+  storageBucket: "gs://from-manga-app.appspot.com",
+  messagingSenderId: "912326591500",
+  appId: "1:912326591500:web:e485a577d7847748749a29"
+}
+initializeApp(firebaseConfig)
+
+const database = getDatabase()
+onValue(ref(database, '/posts'), (snapshot) => {
+  store.dispatch('posts/clearPostList')
+
+  const postList = snapshot.val()
+  for (const [key, value] of Object.entries(postList)) {
+    store.commit('posts/addPost', value)
+  }
+  console.log(snapshot.val())
+})
+
 const auth = getAuth()
 onAuthStateChanged(auth, (user) => {
-  console.log(user)
   store.dispatch('users/setUser', user)
 })
 

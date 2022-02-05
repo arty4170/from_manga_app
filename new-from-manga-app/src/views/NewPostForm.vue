@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 		<form id="add-post-form" action="post" @submit="addPost">
 			<ul>
 				<li>
@@ -64,7 +64,7 @@
 		</div>
 </template>
 <script>
-	import { mapMutations } from 'vuex';
+	import { mapActions } from 'vuex';
 
 	export default {
 		name: 'NewPost',
@@ -72,7 +72,7 @@
 			add_input(name) {
 
 			},
-			...mapMutations({
+			...mapActions({
 				addPost: 'posts/addPost'
 			}),
 			onSubmit() {
