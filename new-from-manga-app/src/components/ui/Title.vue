@@ -10,6 +10,7 @@
 </script>
 <style scoped>
 	.title {
+		border-bottom: 2px solid #fff;
 		font-size: 35px;
 	}
 </style>

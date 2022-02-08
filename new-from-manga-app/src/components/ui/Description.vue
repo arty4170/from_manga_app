@@ -10,6 +10,7 @@
 </script>
 <style scoped>
 	.description {
-		font-size: 18px;
+		margin-top: 20px;
+		font-size: 14px;
 	}
 </style>

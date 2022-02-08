@@ -1,8 +1,6 @@
 <template>
   <div class="post-list">
-    <div class="container">
-      <Post v-for="post in posts" :key="post" :post="post" @click="$router.push(post.id)"></Post>
-    </div>
+    <Post v-for="post in posts" :key="post" :post="post" @click="$router.push(post.id)"></Post>
   </div>
   <div class="pages">
     
@@ -36,7 +34,5 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  border-radius: 10px;
-  border: 3px solid blue;
 }
 </style>

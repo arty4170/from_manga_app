@@ -1,6 +1,6 @@
 <template>
   <div class="btn">
-    <img :src="src1">
+    <div class="img" :style='{backgroundImage: `url(.${src1})`}'></div>
   </div>
 </template>
 
@@ -11,20 +11,22 @@ export default {
   name: 'Button',
   props: {
     src1: String,
-  }
+  },
 }
 </script>
 
 <style scoped>
 .btn{
   cursor: pointer;
-  border-radius: 50%;
-  border: 3px solid blue;
   width: 90px;
   height: 90px;
-  padding: 20px;
+  background: #fff;
+  border-radius: 50%;
+  overflow: hidden;
 }
-.btn img{
+.btn .img{
   width: 100%;
+  height: 100%;
+  background-size: contain;
 }
 </style>

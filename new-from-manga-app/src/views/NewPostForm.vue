@@ -4,7 +4,8 @@
 			<ul>
 				<li>
 					<div>Обложка</div>
-					<q-file v-model="post.cover" label="Выберите файл" filled style="max-width: 300px"/>
+					<input type="file" @change="showPreview" class="inputCover">
+					<img src="" alt="" class="preview">
 				</li>
 				<li>
 					<my-input type="text" name="origtitle" v-model="post.origtitle">
@@ -73,11 +74,21 @@
 
 			},
 			...mapActions({
-				addPost: 'posts/addPost'
+				addPost: 'posts/addPost',
+				uploadCover: 'posts/uploadCover'
 			}),
 			onSubmit() {
+				this.uploadCover({
+					name: this.post.cover,
+					file: this.cover
+				})
 				this.addPost(this.post);
 				this.$router.push('/');
+			},
+			showPreview() {
+				const input = document.querySelector('.inputCover')
+				this.post.cover = `postCovers/${input.files[0].name}`
+				this.file = URL.createObjectURL(input.files[0])
 			}
 		},
 		data() {
@@ -96,9 +107,10 @@
 					translation_status: '',
 					description: '',
 				},
+				file: {}
 			}
 		},
-		created() {
+		mounted() {
 			this.post.id = `${new Date().getTime()}`
 		}
 	}

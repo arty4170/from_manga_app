@@ -47,7 +47,6 @@ onValue(ref(database, '/posts'), (snapshot) => {
   for (const [key, value] of Object.entries(postList)) {
     store.commit('posts/addPost', value)
   }
-  console.log(snapshot.val())
 })
 
 const auth = getAuth()

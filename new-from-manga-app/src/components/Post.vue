@@ -3,7 +3,7 @@
     <div class="left-col">
       <manga-title>{{post.title}}</manga-title>
       <description>{{post.description}}</description>
-      <div class="author">{{post.author}}</div>
+      <div class="author">{{post.authors}}</div>
     </div>
     <div class="right-col">
       <cover :coverSrc="post.cover"></cover>
@@ -19,20 +19,23 @@ export default {
   name: 'Post',
   props: {
     post: Object,
-  },
-  created() {
-    console.log(this.post)
   }
 }
 </script>
 
 <style scoped>
 .post{
+  /* layout*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-radius: 10px;
-  border: 3px solid blue;
+  gap: 20px;
+  width: 80%;
+  max-height: 300px;
+  /* layout*/
+  /* view*/
+  background: #000;
+  color: #fff;
   padding: 25px;
   cursor: pointer;
 
@@ -40,24 +43,16 @@ export default {
 .left-col{
   max-width: 400px;
 }
-.title{
-  font-size: 28px;
-}
-.description{
-  font-size: 18px;
-}
-.author{
-  font-size: 14px;
-}
 .date{
   font-size: 14px;
   text-align: center;
   margin: 25px;
 }
-.image{
-  max-width: 500px;
+.right-col {
+  max-width: 300px;
 }
-.image img {
-  width: 100%;
+.author {
+  margin-top: 15px;
+  font-size: 10px;
 }
 </style>

@@ -61,8 +61,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		border-radius: 10px;
-		border: 3px solid blue;
+		background: darkgray;
 		width: 100%;
 	}
 	.logo{
