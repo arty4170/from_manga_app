@@ -1,14 +1,14 @@
 import {set, ref, getDatabase} from 'firebase/database'
 import {ref as refStorage, getStorage, uploadBytes} from 'firebase/storage'
 
-function getNewPostId() {
+function getId() {
 	return new Date().getTime()
 }
 
 export default {
 	addPost(context, post) {
 		const database = getDatabase()
-		set(ref(database, `/posts/${getNewPostId()}`), post)
+		set(ref(database, `/posts/${getId()}`), post)
 	},
 	deletePost(context, postId) {
 		context.commit('deletePost', postId)
